@@ -3,7 +3,7 @@ using Microsoft.Extensions.Primitives;
 
 namespace DataAccessLayer;
 
-public class BPHConfigurationSection : IConfigurationSection
+public class PhoenixConfigurationSection : IConfigurationSection
 {
 
     private readonly ConfigurationRoot _root;
@@ -16,7 +16,7 @@ public class BPHConfigurationSection : IConfigurationSection
     /// <param name="root">The configuration root.</param>
     /// <param name="path">The path to this section.</param>
     /// <param name="tenantId">Tenant id of the section.</param>
-    public BPHConfigurationSection(ConfigurationRoot? root, string path)
+    public PhoenixConfigurationSection(ConfigurationRoot? root, string path)
     {
         _root = root ?? throw new ArgumentNullException(nameof(root));
         _path = path ?? throw new ArgumentNullException(nameof(path));

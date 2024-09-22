@@ -5,12 +5,10 @@ using DataAccessLayer.Extensions;
 
 namespace DataAccessLayer;
 
-public class BPHConfiguration(
-    IHostEnvironment env,
-    IServiceProvider serviceProvider) : IConfiguration
+public class PhoenixConfiguration(IHostEnvironment env, IServiceProvider serviceProvider) : IConfiguration
 {
     private readonly IConfigurationRoot configurationRoot = new ConfigurationBuilder()
-                .AddBPHConfiguration(env)
+                .AddPhoenixConfiguration(env)
                 .AddEnvironmentVariables()
                 .Build();
     private readonly IServiceProvider serviceProvider = serviceProvider;
@@ -43,6 +41,6 @@ public class BPHConfiguration(
 
     public IConfigurationSection GetSection(string key)
     {
-        return new BPHConfigurationSection(configurationRoot as ConfigurationRoot, key);
+        return new PhoenixConfigurationSection(configurationRoot as ConfigurationRoot, key);
     }
 }

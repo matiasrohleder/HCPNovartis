@@ -5,10 +5,14 @@ namespace WebApp;
 /// <summary>
 /// WebApp's service injection.
 /// </summary>
-internal class ServiceInjection(
-    IServiceCollection services,
-    IConfiguration configuration) : AbstractServiceInjection(services, configuration)
+internal class ServiceInjection : AbstractServiceInjection
 {
+
+    public ServiceInjection(IServiceCollection services, IConfiguration configuration)
+        : base(services, configuration)
+    {
+    }
+
     public override IServiceCollection Initialize()
     {
         Services.AddHttpClient();
@@ -19,17 +23,16 @@ internal class ServiceInjection(
 
         return Services;
     }
-
-    private static void AddBusinessLogics()
+    private void AddServices()
     {
     }
 
-    private static void AddServices()
+    private void AddBusinessLogics()
     {
     }
 
     private void AddConfigurations()
     {
-        Services.AddSingleton<IConfiguration>(x => new BPHConfiguration(x.GetRequiredService<IWebHostEnvironment>(), x.GetRequiredService<IServiceProvider>()));
+        Services.AddSingleton<IConfiguration>(x => new PhoenixConfiguration(x.GetRequiredService<IWebHostEnvironment>(), x.GetRequiredService<IServiceProvider>()));
     }
 }
