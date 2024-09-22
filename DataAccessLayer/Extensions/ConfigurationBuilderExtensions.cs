@@ -6,7 +6,7 @@ namespace DataAccessLayer.Extensions;
 
 public static class ConfigurationBuilderExtensions
 {
-    public static IConfigurationBuilder AddPhoenixConfiguration(this IConfigurationBuilder builder, IHostEnvironment env)
+    public static IConfigurationBuilder AddBPHConfiguration(this IConfigurationBuilder builder, IHostEnvironment env)
     {
         IConfigurationRoot configuration = builder
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -15,6 +15,6 @@ public static class ConfigurationBuilderExtensions
 
         DatabaseConfiguration db = new DatabaseConfiguration().Bind(configuration);
 
-        return builder.Add(new PhoenixConfigurationSource(db.ModelConnection ?? "defaultConnection", db.ModelProvider ?? "defaultProvider"));
+        return builder.Add(new BPHConfigurationSource(db.ModelConnection ?? "defaultConnection", db.ModelProvider ?? "defaultProvider"));
     }
 }

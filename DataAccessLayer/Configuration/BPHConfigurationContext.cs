@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Configuration;
 
-internal class PhoenixConfigurationContext(string connectionString, string modelProvider) : DbContext
+internal class BPHConfigurationContext(string connectionString, string modelProvider) : DbContext
 {
     private readonly string connectionString = connectionString;
     private readonly string modelProvider = modelProvider;
