@@ -1,3 +1,4 @@
+using BusinessLayer.PDFEngine;
 using DataAccessLayer;
 
 namespace WebApp;
@@ -25,6 +26,7 @@ internal class ServiceInjection : AbstractServiceInjection
     }
     private void AddServices()
     {
+        Services.AddScoped<IPdfReadService, PdfReadService>();
     }
 
     private void AddBusinessLogics()
